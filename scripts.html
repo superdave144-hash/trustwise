@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free IT scripts from TrustWise - PowerShell, Python, and automation scripts for IT professionals. Free to use, copy, and modify.">
+<meta name="keywords" content="free PowerShell scripts, IT automation scripts, free Python scripts, sysadmin scripts, Microsoft 365 scripts">
+<meta property="og:title" content="Free IT Scripts - TrustWise Technology Solutions">
+<meta property="og:description" content="Free PowerShell and automation scripts for IT professionals. Copy, use, and modify freely.">
+<meta property="og:url" content="https://trustwise.tech/scripts.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://trustwise.tech/scripts.html">
+<title>Free IT Scripts - TrustWise Technology Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #09090b;
+    --surface:  #111114;
+    --surface2: #18181c;
+    --border:   rgba(255,255,255,0.07);
+    --border2:  rgba(255,255,255,0.12);
+    --blue:     #3b82f6;
+    --blue-dim: rgba(59,130,246,0.12);
+    --blue-glow:rgba(59,130,246,0.25);
+    --teal:     #14b8a6;
+    --text:     #e4e4e7;
+    --text-2:   #a1a1aa;
+    --text-3:   #52525b;
+    --white:    #ffffff;
+    --green:    #34d399;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV - same as index */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; background: rgba(9,9,11,0.85);
+    backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.3px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 10px var(--blue); }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+  .nav-cta { font-size: 0.82rem; font-weight: 600; color: var(--white); background: var(--blue); border: none; padding: 9px 22px; border-radius: 6px; cursor: pointer; text-decoration: none; transition: opacity 0.2s, box-shadow 0.2s; }
+  .nav-cta:hover { opacity: 0.9; box-shadow: 0 0 24px var(--blue-glow); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 130px 48px 64px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 500px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .page-header-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .eyebrow::before { content: ''; width: 16px; height: 1px; background: var(--teal); }
+
+  .page-header h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px; color: var(--white); margin-bottom: 14px; line-height: 1.1; }
+
+  .page-header p { font-size: 1rem; color: var(--text-2); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+
+  .header-meta {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+
+  .meta-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    color: var(--text-3); letter-spacing: 0.5px;
+  }
+
+  .meta-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+  /* CONTROLS */
+  .controls {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 48px;
+    position: sticky;
+    top: 68px;
+    z-index: 90;
+  }
+
+  .controls-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+
+  .search-wrap {
+    position: relative; flex: 1; min-width: 200px; max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--text-3); font-size: 0.8rem; pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%; background: var(--surface); border: 1px solid var(--border2);
+    color: var(--text); font-family: 'Manrope', sans-serif; font-size: 0.85rem;
+    padding: 9px 14px 9px 34px; border-radius: 7px; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .search-input::placeholder { color: var(--text-3); }
+  .search-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px;
+    color: var(--text-3); background: var(--surface); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover { color: var(--text); border-color: var(--border2); }
+  .filter-btn.active { color: var(--blue); border-color: rgba(59,130,246,0.4); background: var(--blue-dim); }
+
+  .script-count {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    color: var(--text-3); margin-left: auto; white-space: nowrap;
+  }
+
+  /* MAIN CONTENT */
+  .main { max-width: 1160px; margin: 0 auto; padding: 40px 48px 80px; }
+
+  /* SCRIPT CARD */
+  .script-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .script-card:hover { border-color: var(--border2); }
+
+  .script-card-header {
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .script-info { flex: 1; }
+
+  .script-title {
+    font-size: 1rem; font-weight: 700; color: var(--white);
+    letter-spacing: -0.2px; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .script-lang-badge {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    color: var(--teal); background: var(--teal-dim);
+    border: 1px solid rgba(20,184,166,0.2);
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px;
+    font-weight: 400;
+  }
+
+  .script-desc { font-size: 0.875rem; color: var(--text-2); line-height: 1.6; margin-bottom: 10px; }
+
+  .script-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .script-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--text-3); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; }
+
+  .script-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+  .copy-btn {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px;
+    color: var(--blue); background: var(--blue-dim);
+    border: 1px solid rgba(59,130,246,0.25);
+    padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .copy-btn:hover { background: rgba(59,130,246,0.2); }
+  .copy-btn.copied { color: var(--green); border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); }
+
+  .toggle-btn {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px;
+    color: var(--text-3); background: var(--surface2);
+    border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px;
+    cursor: pointer; transition: all 0.2s;
+  }
+
+  .toggle-btn:hover { color: var(--text); border-color: var(--border2); }
+
+  /* CODE BLOCK */
+  .code-wrap {
+    border-top: 1px solid var(--border);
+    display: none;
+  }
+
+  .code-wrap.open { display: block; }
+
+  .code-header {
+    background: var(--surface2); padding: 10px 24px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .code-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .code-dot.r { background: rgba(255,95,87,0.5); }
+  .code-dot.y { background: rgba(254,188,46,0.5); }
+  .code-dot.g { background: rgba(40,200,64,0.5); }
+  .code-filename { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--text-3); margin-left: 4px; }
+
+  pre.code-block {
+    background: #0d0d10;
+    padding: 24px;
+    overflow-x: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.8;
+    color: #c9d1d9;
+    margin: 0;
+    white-space: pre;
+  }
+
+  /* Syntax colors */
+  .kw { color: #ff7b72; }   /* keywords */
+  .cm { color: #8b949e; }   /* comments */
+  .st { color: #a5d6ff; }   /* strings */
+  .fn { color: #d2a8ff; }   /* functions */
+  .nm { color: #79c0ff; }   /* names/vars */
+  .op { color: #ff7b72; }   /* operators */
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center; padding: 80px 20px; display: none;
+  }
+
+  .no-results.show { display: block; }
+
+  .no-results h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .no-results p { color: var(--text-2); font-size: 0.9rem; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); background: var(--surface); padding: 32px 48px; }
+  .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-weight: 800; font-size: 0.95rem; color: var(--white); display: flex; align-items: center; gap: 7px; }
+  .footer-logo span { color: var(--blue); }
+  .footer-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 0.82rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 0.78rem; color: var(--text-3); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; } .nav-links { display: none; }
+    .page-header { padding: 110px 20px 48px; }
+    .controls { padding: 16px 20px; }
+    .main { padding: 28px 20px 60px; }
+    footer { padding: 28px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .script-card-header { flex-direction: column; }
+    .script-actions { width: 100%; }
+    .copy-btn, .toggle-btn { flex: 1; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    Trust<span>Wise</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="scripts.html" class="active">Free Scripts</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Free Resources</div>
+    <h1>Free IT Scripts</h1>
+    <p>Scripts we use, scripts we build, scripts we're giving away. Free to copy, use, and modify. No strings attached — just add a comment back to trustwise.tech if you share them.</p>
+    <div class="header-meta">
+      <div class="meta-badge" id="scriptCountBadge">1 script available</div>
+      <div class="meta-badge" style="--green:#3b82f6">Updated May 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="Search scripts...">
+    </div>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="PowerShell">PowerShell</button>
+    <button class="filter-btn" data-filter="Python">Python</button>
+    <button class="filter-btn" data-filter="M365">M365</button>
+    <button class="filter-btn" data-filter="Azure">Azure</button>
+    <button class="filter-btn" data-filter="Security">Security</button>
+    <span class="script-count" id="visibleCount">Showing 1 script</span>
+  </div>
+</div>
+
+<div class="main">
+  <div id="scriptList"></div>
+  <div class="no-results" id="noResults">
+    <h3>No scripts found</h3>
+    <p>Try a different search term or category filter.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><div class="footer-logo-dot"></div>Trust<span>Wise</span></div>
+    <ul class="footer-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="scripts.html">Free Scripts</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 TrustWise Technology Solutions</div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// SCRIPTS DATA
+// To add a new script: copy one object below, paste after the
+// last one (before the closing bracket), fill in your content.
+// ============================================================
+const scripts = [
+  {
+    title: "Get-LocalAdmins.ps1",
+    language: "PowerShell",
+    description: "Lists all members of the local Administrators group on the current Windows machine. Useful for auditing who has elevated access on workstations and servers.",
+    tags: ["PowerShell", "Security", "Audit", "Windows"],
+    filename: "Get-LocalAdmins.ps1",
+    code: `# ============================================================
+# Get-LocalAdmins.ps1
+# TrustWise Technology Solutions - trustwise.tech
+# Lists all local administrator accounts on a Windows machine
+# Free to use. Not for resale.
+# ============================================================
+
+Write-Host ""
+Write-Host "Local Administrators on: $env:COMPUTERNAME" -ForegroundColor Cyan
+Write-Host ("-" * 50) -ForegroundColor DarkGray
+
+# Get all members of the local Administrators group
+$admins = Get-LocalGroupMember -Group "Administrators"
+
+if ($admins.Count -eq 0) {
+    Write-Host "No local administrators found." -ForegroundColor Yellow
+} else {
+    foreach ($admin in $admins) {
+        $type = $admin.ObjectClass.PadRight(10)
+        $name = $admin.Name
+        $origin = if ($name -match "\\\\") { "Domain" } else { "Local" }
+
+        Write-Host "  [$type]  $name  ($origin)" -ForegroundColor White
+    }
+}
+
+Write-Host ""
+Write-Host "Total: $($admins.Count) administrator(s) found." -ForegroundColor Green
+Write-Host ""
+`
+  }
+
+  // ============================================================
+  // ADD YOUR NEXT SCRIPT HERE - copy the block above, paste
+  // below this comment, replace the content. Don't forget the
+  // comma after the closing } of the previous script.
+  // ============================================================
+];
+
+// ============================================================
+// PAGE ENGINE - no need to edit below this line
+// ============================================================
+let activeFilter = 'all';
+
+function buildCards(list) {
+  const container = document.getElementById('scriptList');
+  const noResults = document.getElementById('noResults');
+  const countEl = document.getElementById('visibleCount');
+
+  if (list.length === 0) {
+    container.innerHTML = '';
+    noResults.classList.add('show');
+    countEl.textContent = 'No scripts found';
+    return;
+  }
+
+  noResults.classList.remove('show');
+  countEl.textContent = `Showing ${list.length} script${list.length !== 1 ? 's' : ''}`;
+
+  container.innerHTML = list.map((s, i) => `
+    <div class="script-card" data-tags="${s.tags.join(',')}" data-lang="${s.language}">
+      <div class="script-card-header">
+        <div class="script-info">
+          <div class="script-title">
+            ${s.title}
+            <span class="script-lang-badge">${s.language}</span>
+          </div>
+          <div class="script-desc">${s.description}</div>
+          <div class="script-tags">
+            ${s.tags.map(t => `<span class="script-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="script-actions">
+          <button class="toggle-btn" onclick="toggleCode(${i})">View Code</button>
+          <button class="copy-btn" id="copy-${i}" onclick="copyScript(${i})">Copy</button>
+        </div>
+      </div>
+      <div class="code-wrap" id="code-${i}">
+        <div class="code-header">
+          <div class="code-dot r"></div>
+          <div class="code-dot y"></div>
+          <div class="code-dot g"></div>
+          <div class="code-filename">${s.filename}</div>
+        </div>
+        <pre class="code-block">${escapeHtml(s.code.trim())}</pre>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function toggleCode(i) {
+  const wrap = document.getElementById(`code-${i}`);
+  const btn = wrap.previousElementSibling.querySelector('.toggle-btn');
+  const isOpen = wrap.classList.toggle('open');
+  btn.textContent = isOpen ? 'Hide Code' : 'View Code';
+}
+
+function copyScript(i) {
+  const script = getFiltered()[i];
+  if (!script) return;
+  navigator.clipboard.writeText(script.code.trim()).then(() => {
+    const btn = document.getElementById(`copy-${i}`);
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function getFiltered() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  return scripts.filter(s => {
+    const matchFilter = activeFilter === 'all' || s.tags.includes(activeFilter) || s.language === activeFilter;
+    const matchSearch = !query ||
+      s.title.toLowerCase().includes(query) ||
+      s.description.toLowerCase().includes(query) ||
+      s.tags.some(t => t.toLowerCase().includes(query));
+    return matchFilter && matchSearch;
+  });
+}
+
+function refresh() { buildCards(getFiltered()); }
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    refresh();
+  });
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('input', refresh);
+
+// Badge count
+document.getElementById('scriptCountBadge').textContent = `${scripts.length} script${scripts.length !== 1 ? 's' : ''} available`;
+
+// Init
+buildCards(scripts);
+</script>
+</body>
+</html>
