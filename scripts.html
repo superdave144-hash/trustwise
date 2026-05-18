@@ -399,7 +399,44 @@ Write-Host "Total: $($admins.Count) administrator(s) found." -ForegroundColor Gr
 Write-Host ""
 `
   }
+,{
+  title: "Find-LargeFiles.ps1",
+  language: "PowerShell",
+  description: "Scans your C: drive and lists any files larger than 1GB. Useful for finding space hogs before a cleanup or migration.",
+  tags: ["PowerShell", "Windows", "Storage", "Audit"],
+  filename: "Find-LargeFiles.ps1",
+  code: `# ============================================================
+# Find-LargeFiles.ps1
+# TrustWise Technology Solutions - trustwise.tech
+# Finds all files larger than 1GB on your C: drive
+# Free to use. Not for resale.
+# ============================================================
 
+$threshold = 1GB
+$drive = "C:\\"
+
+Write-Host ""
+Write-Host "Scanning $drive for files larger than 1GB..." -ForegroundColor Cyan
+Write-Host "This may take a few minutes." -ForegroundColor DarkGray
+Write-Host ("-" * 60) -ForegroundColor DarkGray
+
+$largeFiles = Get-ChildItem -Path $drive -Recurse -ErrorAction SilentlyContinue |
+    Where-Object { !$_.PSIsContainer -and $_.Length -gt $threshold } |
+    Select-Object FullName, @{Name="SizeGB";Expression={[math]::Round($_.Length / 1GB, 2)}} |
+    Sort-Object SizeGB -Descending
+
+if ($largeFiles.Count -eq 0) {
+    Write-Host "No files larger than 1GB found." -ForegroundColor Green
+} else {
+    foreach ($file in $largeFiles) {
+        Write-Host "  $($file.SizeGB) GB  -  $($file.FullName)" -ForegroundColor White
+    }
+}
+
+Write-Host ""
+Write-Host "Total files found: $($largeFiles.Count)" -ForegroundColor Green
+Write-Host ""`
+}
   // ============================================================
   // ADD YOUR NEXT SCRIPT HERE - copy the block above, paste
   // below this comment, replace the content. Don't forget the
