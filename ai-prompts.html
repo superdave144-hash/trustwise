@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free AI prompts from TrustWise - practical, tested prompts for finance, productivity, IT, and more. Get better answers from AI.">
+<meta name="keywords" content="AI prompts, ChatGPT prompts, Claude prompts, productivity prompts, finance prompts, IT prompts">
+<meta property="og:title" content="AI Prompts Library - TrustWise Technology Solutions">
+<meta property="og:description" content="Practical AI prompts that actually work. Copy, paste, and get better answers.">
+<meta property="og:url" content="https://trustwise.tech/ai-prompts.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://trustwise.tech/ai-prompts.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>AI Prompts Library - TrustWise Technology Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #09090b;
+    --surface:  #111114;
+    --surface2: #18181c;
+    --border:   rgba(255,255,255,0.07);
+    --border2:  rgba(255,255,255,0.12);
+    --blue:     #3b82f6;
+    --blue-dim: rgba(59,130,246,0.12);
+    --blue-glow:rgba(59,130,246,0.25);
+    --teal:     #14b8a6;
+    --teal-dim: rgba(20,184,166,0.12);
+    --text:     #e4e4e7;
+    --text-2:   #a1a1aa;
+    --text-3:   #52525b;
+    --white:    #ffffff;
+    --green:    #34d399;
+    --amber:    #f59e0b;
+    --amber-dim:rgba(245,158,11,0.12);
+    --purple:   #a78bfa;
+    --purple-dim:rgba(167,139,250,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; background: rgba(9,9,11,0.85);
+    backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.3px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+  .nav-cta { font-size: 0.82rem; font-weight: 600; color: var(--white); background: var(--blue); border: none; padding: 9px 22px; border-radius: 6px; cursor: pointer; text-decoration: none; transition: opacity 0.2s, box-shadow 0.2s; }
+  .nav-cta:hover { opacity: 0.9; box-shadow: 0 0 24px var(--blue-glow); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 130px 48px 64px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 500px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .page-header-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .eyebrow::before { content: ''; width: 16px; height: 1px; background: var(--teal); }
+
+  .page-header h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px; color: var(--white); margin-bottom: 14px; line-height: 1.1; }
+  .page-header p { font-size: 1rem; color: var(--text-2); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+
+  .header-meta { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .meta-badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--text-3); letter-spacing: 0.5px; }
+  .meta-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 6px var(--blue); }
+
+  /* CONTROLS */
+  .controls {
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    padding: 20px 48px; position: sticky; top: 68px; z-index: 90;
+  }
+  .controls-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  .search-wrap { position: relative; flex: 1; min-width: 200px; max-width: 360px; }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 0.8rem; pointer-events: none; }
+  .search-input { width: 100%; background: var(--surface); border: 1px solid var(--border2); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 0.85rem; padding: 9px 14px 9px 34px; border-radius: 7px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .search-input::placeholder { color: var(--text-3); }
+  .search-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+
+  .filter-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px; color: var(--text-3); background: var(--surface); border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .filter-btn:hover { color: var(--text); border-color: var(--border2); }
+  .filter-btn.active { color: var(--blue); border-color: rgba(59,130,246,0.4); background: var(--blue-dim); }
+
+  .prompt-count { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text-3); margin-left: auto; white-space: nowrap; }
+
+  /* MAIN */
+  .main { max-width: 1160px; margin: 0 auto; padding: 40px 48px 80px; }
+
+  /* CATEGORY LABEL */
+  .category-label {
+    display: flex; align-items: center; gap: 12px;
+    margin: 36px 0 16px; font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .category-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* PROMPT CARD */
+  .prompt-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .prompt-card:hover { border-color: var(--border2); }
+
+  .prompt-card-header {
+    padding: 20px 24px;
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+
+  .prompt-info { flex: 1; }
+
+  .prompt-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+  .prompt-title { font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: -0.2px; }
+
+  .cat-badge {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.5px;
+    padding: 2px 8px; border-radius: 4px; font-weight: 400;
+  }
+  .cat-badge.finance  { color: var(--green);  background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2); }
+  .cat-badge.productivity { color: var(--blue); background: var(--blue-dim); border: 1px solid rgba(59,130,246,0.2); }
+  .cat-badge.it       { color: var(--teal);  background: var(--teal-dim); border: 1px solid rgba(20,184,166,0.2); }
+  .cat-badge.career   { color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(245,158,11,0.2); }
+  .cat-badge.creative { color: var(--purple); background: var(--purple-dim); border: 1px solid rgba(167,139,250,0.2); }
+
+  .prompt-desc { font-size: 0.875rem; color: var(--text-2); line-height: 1.6; }
+
+  .prompt-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+  .copy-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px; color: var(--blue); background: var(--blue-dim); border: 1px solid rgba(59,130,246,0.25); padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .copy-btn:hover { background: rgba(59,130,246,0.2); }
+  .copy-btn.copied { color: var(--green); border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); }
+
+  .toggle-btn { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.5px; color: var(--text-3); background: var(--surface2); border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+  .toggle-btn:hover { color: var(--text); border-color: var(--border2); }
+
+  /* PROMPT TEXT */
+  .prompt-wrap { border-top: 1px solid var(--border); display: none; }
+  .prompt-wrap.open { display: block; }
+
+  .prompt-text {
+    background: #0d0d10; padding: 24px;
+    font-family: 'DM Mono', monospace; font-size: 0.82rem;
+    line-height: 1.8; color: #c9d1d9;
+    white-space: pre-wrap; word-break: break-word; margin: 0;
+  }
+
+  /* NO RESULTS */
+  .no-results { text-align: center; padding: 80px 20px; display: none; }
+  .no-results.show { display: block; }
+  .no-results h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .no-results p { color: var(--text-2); font-size: 0.9rem; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); background: var(--surface); padding: 32px 48px; }
+  .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-weight: 800; font-size: 0.95rem; color: var(--white); display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-logo span { color: var(--blue); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 0.82rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 0.78rem; color: var(--text-3); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; } .nav-links { display: none; }
+    .page-header { padding: 110px 20px 48px; }
+    .controls { padding: 16px 20px; }
+    .main { padding: 28px 20px 60px; }
+    footer { padding: 28px 20px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .prompt-card-header { flex-direction: column; }
+    .prompt-actions { width: 100%; }
+    .copy-btn, .toggle-btn { flex: 1; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="shieldGradP" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#3b82f6"/>
+          <stop offset="100%" stop-color="#14b8a6"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="url(#shieldGradP)" opacity="0.15"/>
+      <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="none" stroke="url(#shieldGradP)" stroke-width="1.5"/>
+      <text x="20" y="28" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="url(#shieldGradP)">TW</text>
+    </svg>
+    Trust<span>Wise</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="scripts.html">Free Scripts</a></li>
+    <li><a href="ai-prompts.html" class="active">AI Prompts</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Free Resources</div>
+    <h1>AI Prompts Library</h1>
+    <p>Practical prompts that get you real, useful answers from any AI. Copy, paste, and actually get somewhere. No fluff — just prompts that work.</p>
+    <div class="header-meta">
+      <div class="meta-badge" id="promptCountBadge">Loading prompts...</div>
+      <div class="meta-badge" style="--blue:#14b8a6">Works with Claude, ChatGPT &amp; more</div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="Search prompts...">
+    </div>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="finance">💰 Finance</button>
+    <button class="filter-btn" data-filter="productivity">⚡ Productivity</button>
+    <button class="filter-btn" data-filter="it">🖥️ IT &amp; Tech</button>
+    <button class="filter-btn" data-filter="career">🎯 Career</button>
+    <button class="filter-btn" data-filter="creative">💡 Creative</button>
+    <span class="prompt-count" id="visibleCount"></span>
+  </div>
+</div>
+
+<div class="main">
+  <div id="promptList"></div>
+  <div class="no-results" id="noResults">
+    <h3>No prompts found</h3>
+    <p>Try a different search term or category.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">
+      <svg style="width:24px;height:24px;flex-shrink:0" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sfgp" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#14b8a6"/></linearGradient></defs>
+        <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="url(#sfgp)" opacity="0.15"/>
+        <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="none" stroke="url(#sfgp)" stroke-width="1.5"/>
+        <text x="20" y="28" text-anchor="middle" font-family="Manrope,sans-serif" font-size="12" font-weight="800" fill="url(#sfgp)">TW</text>
+      </svg>
+      Trust<span>Wise</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="scripts.html">Free Scripts</a></li>
+      <li><a href="ai-prompts.html">AI Prompts</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 TrustWise Technology Solutions</div>
+  </div>
+</footer>
+
+<script>
+const prompts = [
+  // ── FINANCE ──────────────────────────────────────────────
+  {
+    title: "The Honest Budget Audit",
+    category: "finance",
+    description: "Paste in your last month of expenses and get a no-nonsense breakdown of where your money is actually going — including the leaks you don't notice.",
+    text: `I'm going to paste my last month of expenses below. Please do the following:
+
+1. Categorize every expense into clear groups (food, subscriptions, transport, entertainment, etc.)
+2. Identify my top 3 spending leaks — things I'm likely spending on without realising how much it adds up
+3. For each of those 3 leaks, calculate what I'd save in a year if I cut that category by 30%
+4. Tell me one specific thing I could cut today with almost no lifestyle impact
+
+Be direct, not gentle. I want a real answer, not encouragement.
+
+Here are my expenses:
+[PASTE YOUR EXPENSES HERE]`
+  },
+  {
+    title: "Explain This Like I'll Actually Use It",
+    category: "finance",
+    description: "Get a plain-English explanation of any financial concept — investments, tax terms, mortgage structures — without the jargon.",
+    text: `Explain [FINANCIAL CONCEPT] to me in plain English.
+
+Assume I'm a reasonably intelligent adult who doesn't work in finance. Don't use jargon without explaining it. 
+
+Include:
+- What it actually is in one sentence
+- How it works in practice with a simple example using real numbers
+- When it matters and when it doesn't
+- One thing most people get wrong about it
+
+Skip the disclaimers. Just explain it clearly.`
+  },
+  {
+    title: "Should I Pay Off Debt or Invest?",
+    category: "finance",
+    description: "Give the AI your specific debt and savings situation and get a clear framework for which move makes more mathematical sense.",
+    text: `Help me work out whether I should pay off debt or invest my spare cash. Here's my situation:
+
+- Monthly spare cash available: [AMOUNT]
+- Debts: [LIST EACH DEBT WITH BALANCE, INTEREST RATE, MINIMUM PAYMENT]
+- Potential investment: [WHERE YOU'D INVEST AND EXPECTED RETURN %]
+- Emergency fund status: [DO YOU HAVE ONE? HOW MANY MONTHS OF EXPENSES?]
+
+Run the numbers for me. Which approach wins mathematically over 5 years? What would you do and why? Be specific.`
+  },
+
+  // ── PRODUCTIVITY ──────────────────────────────────────────
+  {
+    title: "The Email That Gets a Response",
+    category: "productivity",
+    description: "Turn a vague request into a clear, concise email that actually gets read and replied to.",
+    text: `Help me write a professional email. Here's the context:
+
+- Who I'm emailing: [ROLE / RELATIONSHIP]
+- What I want them to do: [SPECIFIC ACTION]
+- Key context they need: [BACKGROUND INFO]
+- Tone: [FORMAL / FRIENDLY / URGENT]
+- My biggest concern: [WHAT MIGHT MAKE THEM SAY NO?]
+
+Write a version that's under 150 words, has a clear subject line, and ends with one specific ask. No filler phrases like "I hope this finds you well."`
+  },
+  {
+    title: "Turn My Notes Into an Action Plan",
+    category: "productivity",
+    description: "Paste in messy meeting notes or brainstorm dumps and get a clean, prioritised action list back.",
+    text: `I'm going to paste some messy notes from [a meeting / a brainstorm / my thoughts]. Turn them into:
+
+1. A 3-sentence summary of what was discussed or decided
+2. A numbered action list, sorted by priority, with who owns each item (if mentioned) and a suggested deadline
+3. Any open questions or blockers that need to be resolved before progress can happen
+
+Keep it tight. If something in the notes is vague or contradictory, flag it rather than guessing.
+
+[PASTE YOUR NOTES HERE]`
+  },
+  {
+    title: "Build Me a Weekly Template",
+    category: "productivity",
+    description: "Describe your work and goals, and get a structured weekly schedule that protects your deep work time.",
+    text: `Help me design a weekly schedule template based on how I actually work.
+
+Here's my situation:
+- Job / role: [WHAT YOU DO]
+- Key responsibilities that recur weekly: [LIST THEM]
+- Hours I want to work: [START TIME – END TIME]
+- My most productive time of day: [MORNING / AFTERNOON / EVENING]
+- Biggest time wasters right now: [WHAT EATS YOUR TIME]
+- One goal I want to make more progress on: [YOUR GOAL]
+
+Create a realistic Mon–Fri template that protects time for deep work, batches meetings, and builds in buffers. Format it as a simple table.`
+  },
+
+  // ── IT & TECH ─────────────────────────────────────────────
+  {
+    title: "Debug This Error Message",
+    category: "it",
+    description: "Paste in any error message and get a plain-English explanation of what went wrong and exactly how to fix it.",
+    text: `I'm getting this error and I need help fixing it:
+
+[PASTE THE FULL ERROR MESSAGE HERE]
+
+Context:
+- What I was doing when it happened: [DESCRIBE THE ACTION]
+- Environment: [OS, SOFTWARE VERSION, LANGUAGE, ETC.]
+- What I've already tried: [IF ANYTHING]
+
+Please:
+1. Explain in plain English what this error actually means
+2. Tell me the most likely cause
+3. Give me step-by-step instructions to fix it
+4. Tell me how to prevent it happening again`
+  },
+  {
+    title: "Write Me a Runbook",
+    category: "it",
+    description: "Describe a process or procedure and get a clean, step-by-step runbook anyone on your team can follow.",
+    text: `Write a runbook for the following IT process:
+
+Process name: [NAME]
+Purpose: [WHAT IT DOES AND WHY]
+Who runs this: [ROLE]
+When it's run: [TRIGGER / FREQUENCY]
+Systems involved: [LIST TOOLS, PLATFORMS, OR SYSTEMS]
+Steps involved (rough): [DESCRIBE IN YOUR OWN WORDS]
+What can go wrong: [KNOWN FAILURE POINTS IF ANY]
+
+Format it as a proper runbook with: Overview, Prerequisites, Step-by-step instructions (numbered), Troubleshooting section, and Notes. Write it so someone doing this for the first time could follow it successfully.`
+  },
+  {
+    title: "Explain This Code",
+    category: "it",
+    description: "Paste in any script or code snippet and get a plain-English walkthrough of exactly what it does.",
+    text: `Explain what this code does, line by line where it matters:
+
+[PASTE CODE HERE]
+
+I need to understand:
+1. What the overall purpose of this script/function is
+2. What each major section does (in plain English, not just restating the code)
+3. Any potential risks, edge cases, or things that could break
+4. Whether there are any obvious improvements or red flags
+
+Assume I understand basic programming concepts but am not an expert in this specific language.`
+  },
+
+  // ── CAREER ───────────────────────────────────────────────
+  {
+    title: "Prep Me for This Interview",
+    category: "career",
+    description: "Paste in a job description and get a tailored set of likely questions, suggested answers, and what to research beforehand.",
+    text: `Help me prepare for a job interview. Here's the job description:
+
+[PASTE JOB DESCRIPTION HERE]
+
+My background: [2-3 SENTENCES ABOUT YOUR EXPERIENCE]
+
+Give me:
+1. The 5 most likely interview questions for this specific role
+2. For each question, a bullet-pointed outline of a strong answer (not a script — just the key points)
+3. 3 smart questions I should ask them at the end
+4. Two things I should research before the interview
+
+Be specific to this role, not generic interview advice.`
+  },
+  {
+    title: "Rewrite My CV Bullet Points",
+    category: "career",
+    description: "Turn weak, vague job descriptions on your CV into punchy, achievement-focused bullet points.",
+    text: `Rewrite these CV bullet points to be stronger, more achievement-focused, and more specific.
+
+Current bullet points:
+[PASTE YOUR CURRENT BULLET POINTS]
+
+Role context: [JOB TITLE AND INDUSTRY]
+
+Rules:
+- Start each bullet with a strong action verb
+- Include numbers or outcomes where possible (if I haven't given you numbers, ask me for them)
+- Remove filler words and passive language
+- Keep each bullet under 20 words
+- Focus on impact, not just responsibilities
+
+Give me 3 alternative versions of each bullet so I can choose the best one.`
+  },
+
+  // ── CREATIVE ─────────────────────────────────────────────
+  {
+    title: "Rubber Duck Debugging",
+    category: "creative",
+    description: "Stuck on a problem? Explain it out loud to the AI and get fresh angles, blind spots identified, and alternative approaches.",
+    text: `I'm stuck on a problem and I need a thinking partner, not a solution.
+
+Here's the problem: [DESCRIBE YOUR PROBLEM IN DETAIL]
+
+Here's what I've tried so far: [WHAT YOU'VE ALREADY DONE OR CONSIDERED]
+
+Here's where I'm stuck: [WHAT SPECIFICALLY HAS YOU BLOCKED]
+
+Do the following:
+1. Reflect back what you understand the core problem to be (I might have described it wrong)
+2. Point out any assumptions I might be making that could be wrong
+3. Suggest 3 completely different angles or approaches I haven't mentioned
+4. Ask me one question that might unlock something
+
+Don't just solve it. Help me think better.`
+  },
+  {
+    title: "Give Me 10 Ideas",
+    category: "creative",
+    description: "Need options fast? Get a broad list of ideas for any challenge — then drill into the best ones.",
+    text: `Generate 10 ideas for [DESCRIBE YOUR CHALLENGE OR GOAL].
+
+Context:
+- Constraints: [BUDGET, TIME, RESOURCES, ETC.]
+- What I've already considered and rejected: [LIST IF ANYTHING]
+- What success looks like: [HOW YOU'D MEASURE A GOOD OUTCOME]
+
+Rules for your ideas:
+- Make them genuinely varied — different approaches, not 10 versions of the same thing
+- Include at least 2 unconventional or surprising ideas
+- Keep each idea to 2 sentences max: what it is and why it could work
+
+After the list, tell me which 2 you'd explore first and why.`
+  }
+];
+
+// ── ENGINE ────────────────────────────────────────────────
+let activeFilter = 'all';
+
+const categoryOrder = ['finance', 'productivity', 'it', 'career', 'creative'];
+const categoryLabels = {
+  finance: '💰 Finance',
+  productivity: '⚡ Productivity',
+  it: '🖥️ IT & Tech',
+  career: '🎯 Career',
+  creative: '💡 Creative'
+};
+
+function getFiltered() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  return prompts.filter(p => {
+    const matchFilter = activeFilter === 'all' || p.category === activeFilter;
+    const matchSearch = !query ||
+      p.title.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query) ||
+      p.category.toLowerCase().includes(query);
+    return matchFilter && matchSearch;
+  });
+}
+
+function buildCards(list) {
+  const container = document.getElementById('promptList');
+  const noResults = document.getElementById('noResults');
+  const countEl = document.getElementById('visibleCount');
+
+  if (list.length === 0) {
+    container.innerHTML = '';
+    noResults.classList.add('show');
+    countEl.textContent = 'No prompts found';
+    return;
+  }
+
+  noResults.classList.remove('show');
+  countEl.textContent = `Showing ${list.length} prompt${list.length !== 1 ? 's' : ''}`;
+
+  // Group by category, maintaining order
+  const grouped = {};
+  list.forEach(p => {
+    if (!grouped[p.category]) grouped[p.category] = [];
+    grouped[p.category].push(p);
+  });
+
+  let html = '';
+  const showCategories = activeFilter === 'all';
+
+  if (showCategories) {
+    categoryOrder.forEach(cat => {
+      if (!grouped[cat]) return;
+      html += `<div class="category-label">${categoryLabels[cat]}</div>`;
+      grouped[cat].forEach((p, i) => {
+        const globalIndex = prompts.indexOf(p);
+        html += buildCard(p, globalIndex);
+      });
+    });
+  } else {
+    list.forEach(p => {
+      html += buildCard(p, prompts.indexOf(p));
+    });
+  }
+
+  container.innerHTML = html;
+}
+
+function buildCard(p, i) {
+  return `
+    <div class="prompt-card" data-index="${i}">
+      <div class="prompt-card-header">
+        <div class="prompt-info">
+          <div class="prompt-title-row">
+            <span class="prompt-title">${p.title}</span>
+            <span class="cat-badge ${p.category}">${categoryLabels[p.category]}</span>
+          </div>
+          <div class="prompt-desc">${p.description}</div>
+        </div>
+        <div class="prompt-actions">
+          <button class="toggle-btn" onclick="togglePrompt(${i})">View Prompt</button>
+          <button class="copy-btn" id="copy-${i}" onclick="copyPrompt(${i})">Copy</button>
+        </div>
+      </div>
+      <div class="prompt-wrap" id="prompt-${i}">
+        <pre class="prompt-text">${escapeHtml(p.text.trim())}</pre>
+      </div>
+    </div>`;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function togglePrompt(i) {
+  const wrap = document.getElementById(`prompt-${i}`);
+  const card = wrap.parentElement;
+  const btn = card.querySelector('.toggle-btn');
+  const isOpen = wrap.classList.toggle('open');
+  btn.textContent = isOpen ? 'Hide Prompt' : 'View Prompt';
+}
+
+function copyPrompt(i) {
+  navigator.clipboard.writeText(prompts[i].text.trim()).then(() => {
+    const btn = document.getElementById(`copy-${i}`);
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function refresh() { buildCards(getFiltered()); }
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    refresh();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', refresh);
+
+document.getElementById('promptCountBadge').textContent = `${prompts.length} prompts available`;
+
+refresh();
+</script>
+</body>
+</html>

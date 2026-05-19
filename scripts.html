@@ -10,6 +10,7 @@
 <meta property="og:url" content="https://trustwise.tech/scripts.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://trustwise.tech/scripts.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Free IT Scripts - TrustWise Technology Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -52,8 +53,8 @@
     backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
   }
 
-  .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.3px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-  .nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 10px var(--blue); }
+  .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.3px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
   .nav-logo span { color: var(--blue); }
   .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
   .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
@@ -269,9 +270,8 @@
   /* FOOTER */
   footer { border-top: 1px solid var(--border); background: var(--surface); padding: 32px 48px; }
   .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-  .footer-logo { font-weight: 800; font-size: 0.95rem; color: var(--white); display: flex; align-items: center; gap: 7px; }
+  .footer-logo { font-weight: 800; font-size: 0.95rem; color: var(--white); display: flex; align-items: center; gap: 10px; }
   .footer-logo span { color: var(--blue); }
-  .footer-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
   .footer-links { display: flex; gap: 28px; list-style: none; }
   .footer-links a { font-size: 0.82rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--text); }
@@ -294,12 +294,23 @@
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-dot"></div>
+    <svg class="nav-logo-icon" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="shieldGradS" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#3b82f6"/>
+          <stop offset="100%" stop-color="#14b8a6"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="url(#shieldGradS)" opacity="0.15"/>
+      <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="none" stroke="url(#shieldGradS)" stroke-width="1.5"/>
+      <text x="20" y="28" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="url(#shieldGradS)">TW</text>
+    </svg>
     Trust<span>Wise</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html#services">Services</a></li>
     <li><a href="scripts.html" class="active">Free Scripts</a></li>
+    <li><a href="ai-prompts.html">AI Prompts</a></li>
     <li><a href="index.html#portfolio">Portfolio</a></li>
     <li><a href="index.html#why">Why Us</a></li>
     <li><a href="index.html#contact">Contact</a></li>
@@ -345,10 +356,19 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo"><div class="footer-logo-dot"></div>Trust<span>Wise</span></div>
+    <a href="index.html" class="footer-logo" style="text-decoration:none">
+      <svg style="width:24px;height:24px;flex-shrink:0" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sfgs" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#14b8a6"/></linearGradient></defs>
+        <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="url(#sfgs)" opacity="0.15"/>
+        <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="none" stroke="url(#sfgs)" stroke-width="1.5"/>
+        <text x="20" y="28" text-anchor="middle" font-family="Manrope,sans-serif" font-size="12" font-weight="800" fill="url(#sfgs)">TW</text>
+      </svg>
+      Trust<span>Wise</span>
+    </a>
     <ul class="footer-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="scripts.html">Free Scripts</a></li>
+      <li><a href="ai-prompts.html">AI Prompts</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <div class="footer-copy">&copy; 2026 TrustWise Technology Solutions</div>

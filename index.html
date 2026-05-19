@@ -13,6 +13,7 @@
 <meta name="twitter:title" content="TrustWise Technology Solutions">
 <meta name="twitter:description" content="IT automation and scripting solutions. We fix what others gave up on.">
 <link rel="canonical" href="https://trustwise.tech/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>TrustWise Technology Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -57,8 +58,8 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.3px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-  .nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 10px var(--blue); }
+  .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.3px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
   .nav-logo span { color: var(--blue); }
 
   .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
@@ -68,11 +69,32 @@
   .nav-cta { font-size: 0.82rem; font-weight: 600; color: var(--white); background: var(--blue); border: none; padding: 9px 22px; border-radius: 6px; cursor: pointer; text-decoration: none; transition: opacity 0.2s, box-shadow 0.2s; }
   .nav-cta:hover { opacity: 0.9; box-shadow: 0 0 24px var(--blue-glow); }
 
+  /* AVAILABILITY BAR */
+  .availability-bar {
+    position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+    background: rgba(20,184,166,0.07);
+    border-bottom: 1px solid rgba(20,184,166,0.15);
+    padding: 8px 48px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .avail-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #34d399; box-shadow: 0 0 8px #34d399;
+    animation: avpulse 2s ease-in-out infinite; flex-shrink: 0;
+  }
+  @keyframes avpulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .avail-text {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--text-2); letter-spacing: 0.5px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .avail-sep { color: var(--text-3); }
+
   /* HERO */
   .hero {
     position: relative; min-height: 100vh;
     display: flex; align-items: center;
-    padding: 140px 48px 100px; overflow: hidden;
+    padding: 176px 48px 100px; overflow: hidden;
   }
 
   .hero-glow {
@@ -214,13 +236,48 @@
   /* FOOTER */
   footer { border-top: 1px solid var(--border); background: var(--surface); padding: 32px 48px; }
   .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-  .footer-logo { font-weight: 800; font-size: 0.95rem; color: var(--white); display: flex; align-items: center; gap: 7px; }
+  .footer-logo { font-weight: 800; font-size: 0.95rem; color: var(--white); display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .footer-logo span { color: var(--blue); }
-  .footer-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
   .footer-links { display: flex; gap: 28px; list-style: none; }
   .footer-links a { font-size: 0.82rem; color: var(--text-3); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--text); }
   .footer-copy { font-size: 0.78rem; color: var(--text-3); }
+
+  /* HOW IT WORKS */
+  .how-it-works { padding: 72px 48px; border-bottom: 1px solid var(--border); }
+  .how-inner { max-width: 1160px; margin: 0 auto; }
+  .how-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 48px; position: relative; }
+  .how-steps::before { content: ''; position: absolute; top: 27px; left: calc(16.66% + 20px); right: calc(16.66% + 20px); height: 1px; background: linear-gradient(90deg, var(--blue), var(--teal)); opacity: 0.25; }
+  .how-step { text-align: center; padding: 0 32px; }
+  .how-step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: 'DM Mono', monospace; font-size: 0.8rem; font-weight: 500; color: var(--blue); position: relative; z-index: 1; }
+  .how-step h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .how-step p { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; }
+
+  /* RESOURCES STRIP */
+  .resources-strip { background: var(--surface); border-bottom: 1px solid var(--border); padding: 72px 48px; }
+  .resources-inner { max-width: 1160px; margin: 0 auto; }
+  .resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+  .resource-card { background: var(--bg); border: 1px solid var(--border2); border-radius: 12px; padding: 28px 32px; display: flex; align-items: center; gap: 24px; text-decoration: none; transition: all 0.2s; }
+  .resource-card:hover { border-color: var(--blue); box-shadow: 0 0 30px rgba(59,130,246,0.08); transform: translateY(-2px); }
+  .resource-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .resource-icon.scripts { background: var(--teal-dim); border: 1px solid rgba(20,184,166,0.2); }
+  .resource-icon.prompts { background: var(--blue-dim); border: 1px solid rgba(59,130,246,0.2); }
+  .resource-text h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+  .resource-text p { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
+  .resource-arrow { margin-left: auto; color: var(--text-3); font-size: 1.1rem; flex-shrink: 0; transition: color 0.2s, transform 0.2s; }
+  .resource-card:hover .resource-arrow { color: var(--blue); transform: translateX(3px); }
+
+  /* FAQ */
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+  .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item:hover { border-color: var(--border2); }
+  .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 22px 28px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: 'Manrope', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--white); transition: color 0.2s; }
+  .faq-question:hover { color: var(--blue); }
+  .faq-chevron { color: var(--text-3); font-size: 1rem; transition: transform 0.25s; flex-shrink: 0; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--blue); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .faq-item.open .faq-answer { max-height: 200px; }
+  .faq-answer-inner { padding: 18px 28px 22px; font-size: 0.9rem; color: var(--text-2); line-height: 1.75; border-top: 1px solid var(--border); }
 
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -231,6 +288,9 @@
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
+    .how-steps { grid-template-columns: 1fr; gap: 32px; }
+    .how-steps::before { display: none; }
+    .resources-grid { grid-template-columns: 1fr; }
     .hero-inner { grid-template-columns: 1fr; gap: 48px; }
     .hero-terminal { max-width: 540px; }
     .services-grid { grid-template-columns: repeat(2,1fr); }
@@ -242,6 +302,9 @@
 
   @media (max-width: 680px) {
     nav { padding: 0 20px; } .nav-links { display: none; }
+    .availability-bar { padding: 8px 20px; font-size: 0.65rem; }
+    .how-it-works { padding: 48px 20px; }
+    .resources-strip { padding: 48px 20px; }
     .hero { padding: 110px 20px 60px; }
     .section { padding: 64px 20px; }
     .stats-inner { padding: 32px 20px; grid-template-columns: repeat(2,1fr); }
@@ -255,7 +318,17 @@
 
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logo-dot"></div>
+    <svg class="nav-logo-icon" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="shieldGrad" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#3b82f6"/>
+          <stop offset="100%" stop-color="#14b8a6"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="url(#shieldGrad)" opacity="0.15"/>
+      <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="none" stroke="url(#shieldGrad)" stroke-width="1.5"/>
+      <text x="20" y="28" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="url(#shieldGrad)">TW</text>
+    </svg>
     Trust<span>Wise</span>
   </a>
   <ul class="nav-links">
@@ -263,10 +336,22 @@
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="scripts.html">Free Scripts</a></li>
+    <li><a href="ai-prompts.html">AI Prompts</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Get a Quote</a>
 </nav>
+
+<div class="availability-bar">
+  <div class="avail-dot"></div>
+  <div class="avail-text">
+    Currently accepting projects
+    <span class="avail-sep">·</span>
+    Typically responds within 2 hours
+    <span class="avail-sep">·</span>
+    Mon–Fri
+  </div>
+</div>
 
 <section class="hero">
   <div class="hero-glow"></div>
@@ -319,6 +404,31 @@
   </div>
 </div>
 
+<div class="how-it-works">
+  <div class="how-inner">
+    <div class="eyebrow">The Process</div>
+    <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-0.8px;color:var(--white);line-height:1.15;margin-bottom:14px;">How It Works</h2>
+    <p style="font-size:1rem;color:var(--text-2);max-width:520px;line-height:1.7;">From problem to working solution in three simple steps. No lengthy discovery phases, no surprises.</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <h3>Describe</h3>
+        <p>Tell us what's broken or what you need in plain English. No jargon required. We'll ask the right questions.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <h3>Get a Quote</h3>
+        <p>We diagnose the problem and send you a flat quote upfront. No hourly billing, no hidden costs. You decide.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <h3>Delivered</h3>
+        <p>Working solution in your hands — typically within 24–72 hours. We don't close out until you're satisfied.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section class="section" id="services">
   <div class="section-inner">
     <div class="eyebrow">What We Do</div>
@@ -364,6 +474,32 @@
     </div>
   </div>
 </section>
+
+<div class="resources-strip">
+  <div class="resources-inner">
+    <div class="eyebrow">Free Resources</div>
+    <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-0.8px;color:var(--white);line-height:1.15;margin-bottom:14px;">Take Something With You</h2>
+    <p style="font-size:1rem;color:var(--text-2);max-width:520px;line-height:1.7;">Free tools and prompts from us to you. No signup, no strings attached.</p>
+    <div class="resources-grid">
+      <a href="scripts.html" class="resource-card">
+        <div class="resource-icon scripts">💻</div>
+        <div class="resource-text">
+          <h3>Free IT Scripts</h3>
+          <p>PowerShell and automation scripts we use ourselves. Copy, use, and modify freely.</p>
+        </div>
+        <div class="resource-arrow">→</div>
+      </a>
+      <a href="ai-prompts.html" class="resource-card">
+        <div class="resource-icon prompts">🤖</div>
+        <div class="resource-text">
+          <h3>AI Prompts Library</h3>
+          <p>Practical prompts for finance, productivity, IT, and more. Get better answers from AI.</p>
+        </div>
+        <div class="resource-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <section class="section" style="background:var(--surface)" id="portfolio">
   <div class="section-inner">
@@ -419,6 +555,61 @@
   </div>
 </section>
 
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="eyebrow">FAQ</div>
+    <h2>Common Questions</h2>
+    <p class="section-lead">Everything you need to know before reaching out.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I know if my problem is something you can fix?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Just ask us. Describe what's broken or what you need in plain English and we'll tell you straight away if it's something we can help with.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What information do I need to provide?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Details around the solution you're looking for — what the tool or process does, what's broken or missing, and any relevant files, scripts, or error messages you have.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you sign NDAs?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes, we can. Just let us know when you get in touch and we'll sort it before any work begins.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if I'm not happy with the result?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We work with you until it's right. We don't close out a project until you're satisfied with what's been delivered.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you work with individuals or only businesses?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We work with anyone — individuals, small teams, or large organizations. If you have a problem we can fix, we want to hear from you.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="contact">
   <div class="section-inner">
     <div class="contact-grid">
@@ -428,7 +619,7 @@
         <p>Describe your problem in plain English. No tech jargon required. We'll respond with a clear diagnosis and a flat quote — usually within a few hours.</p>
         <div class="contact-detail">
           <div class="contact-icon">@</div>
-          <div class="contact-text">contact@trustwise.tech</div>
+          <div class="contact-text">david@trustwise.tech</div>
         </div>
         <div class="contact-detail">
           <div class="contact-icon">◉</div>
@@ -447,16 +638,33 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo"><div class="footer-logo-dot"></div>Trust<span>Wise</span></div>
+    <a href="#" class="footer-logo">
+      <svg style="width:24px;height:24px;flex-shrink:0" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sfg" x1="0" y1="0" x2="40" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#14b8a6"/></linearGradient></defs>
+        <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="url(#sfg)" opacity="0.15"/>
+        <path d="M20 1L37 8.5V22C37 32 29.5 40.5 20 44C10.5 40.5 3 32 3 22V8.5L20 1Z" fill="none" stroke="url(#sfg)" stroke-width="1.5"/>
+        <text x="20" y="28" text-anchor="middle" font-family="Manrope,sans-serif" font-size="12" font-weight="800" fill="url(#sfg)">TW</text>
+      </svg>
+      Trust<span>Wise</span>
+    </a>
     <ul class="footer-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="scripts.html">Free Scripts</a></li>
+      <li><a href="ai-prompts.html">AI Prompts</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="footer-copy">&copy; 2026 TrustWise Technology Solutions</div>
   </div>
 </footer>
 
+<script>
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
 </body>
 </html>
